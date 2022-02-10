@@ -13,7 +13,7 @@ This Genesys Cloud Developer Blueprint provides an example of how to integrate a
 
 ## Scenario 
 
-A customer wants to design an inbound call flow in Architect that will use a data action to determine if there are any agents available on a given queue. If not, the caller should be transferred to a secondary queue. This customer is unfamiliar with such an architecture and would like to see a working example configured in their organisation. 
+A customer wants to design an inbound call flow in Architect that will use a data action to determine if there are any agents available on a given queue. If not, the caller should be transferred to a secondary queue. This customer is unfamiliar with such an architecture and would like to see a working example configured in their organization. 
 
 ## Solution
 
@@ -29,7 +29,7 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 * [Test your flow](#test-your-flow "Goes to the testing section")
 * [Additional resources](#additional-resources "Goes to the Additional resources section")
 
-## Solution Components
+## Solution components
 
 * **Genesys Cloud** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use an Architect inbound call flow, along with a Genesys Cloud integration, data action, queues, DID phone number and call route.
 * **Archy** - A Genesys Cloud command-line tool for building and managing Architect flows.
@@ -50,7 +50,7 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 * Archy. For more information, see [Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page").
 * CX as Code. For more information, see [CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Opens the CX as Code page").
 
-### Development tools running in your local environment
+### Development tools that run in your local environment
 - Terraform (the latest binary). For more information, see [Download Terraform](https://www.terraform.io/downloads.html "Opens the Download Terraform page") in the Terraform website.
 - Archy. For more information, see [Archy Installation](https://developer.genesys.cloud/devapps/archy/install "Opens the Archy Installation page") 
 
@@ -69,7 +69,7 @@ First define the environment variables that hold the OAuth credential grant that
 
 Clone the [architect-flow-public-api-blueprint](https://github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint "Opens the project repository on GitHub") repository on GitHub.
 
-**Note:** You can also avoid cloning the repo entirely by referencing the remote module where it is stored on GitHub. To do this, create your own `main.tf` file, copy the contents of `files/main.tf` over, and change the value associated with the `source` parameter to `"github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint//blueprint/files/modules/check-queue-flow"`. You will also need to copy [archy_flow.yml](https://github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint/blob/main/blueprint/files/archy_flow.yml "Opens the exported Archy file in the project repository on GitHub") to the same directory. 
+**Note:** You can also avoid cloning the repo entirely by referencing the remote module where it is stored on GitHub. To do this, create your own `main.tf` file, copy the contents of `files/main.tf` over, and change the value associated with the `source` parameter to `"github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint//blueprint/files/modules/check-queue-flow"`. You will copy [archy_flow.yml](https://github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint/blob/main/blueprint/files/archy_flow.yml "Opens the exported Archy file in the project repository on GitHub") to the same directory. 
 
 ### Configure the Terraform module
 
@@ -86,9 +86,7 @@ module "check_queue_flow" {
 }
 ```
 
-### Deploy
-
-Deploy the Architect flow and Genesys Cloud objects
+### Deploy the Architect flow and Genesys Cloud objects
 
 From the directory containing `main.tf` and `archy_flow.yml`, run:
 
@@ -99,7 +97,7 @@ $ terraform apply --auto-approve
 
 ## Test your flow
 
-Dial a phone number that was provided to the `did_numbers` attribute in `main.tf`. If everything deployed correctly, you should hear "Welcome to the main menu. Press 1 to connect to an agent. Press 2 to disconnect." After pressing 1, you will be transferred to the primary or seconday queue depending on agent availability in the primary queue. 
+Dial a phone number that was provided to the `did_numbers` attribute in `main.tf`. If everything deployed correctly, you should hear "Welcome to the main menu. Press 1 to connect to an agent. Press 2 to disconnect." After pressing 1, you will be transferred to the primary or secondary queue depending on agent availability in the primary queue. 
 
 ## Additional resources
 
