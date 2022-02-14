@@ -5,15 +5,14 @@ indextype: blueprint
 icon: blueprint
 image: images/CallFlow.png
 category: 5
-summary: |
-  This Genesys Cloud Developer Blueprint provides an example of how to integrate a public API call into an Architect flow to check if any agents are available on a given queue and make routing decisions based on the outcome. 
+summary: This Genesys Cloud Developer Blueprint provides an example of integrating a public API call into an Architect flow to check if any agents are available on a given queue and make routing decisions based on the outcome. 
 --- 
 
-This Genesys Cloud Developer Blueprint provides an example of how to integrate a public API call into an Architect flow to check if any agents are available on a given queue and make routing decisions based on the outcome.
+This Genesys Cloud Developer Blueprint provides an example of integrating a public API call into an Architect flow to check if any agents are available on a given queue and make routing decisions based on the outcome.
 
 ## Scenario 
 
-A customer wants to design an inbound call flow in Architect that will use a data action to determine if there are any agents available on a given queue. If not, the caller should be transferred to a secondary queue. This customer is unfamiliar with such an architecture and would like to see a working example configured in their organization. 
+A customer wants to design an inbound call flow in Architect that will use a data action to determine if agents are available on a given queue. If not, the caller is transferred to a secondary queue. The customer is unfamiliar with such an architecture and would like to see a working example configured in their organization. 
 
 ## Solution
 
@@ -31,9 +30,9 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 
 ## Solution components
 
-* **Genesys Cloud** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use an Architect inbound call flow, along with a Genesys Cloud integration, data action, queues, DID phone number and call route.
-* **Archy** - A Genesys Cloud command-line tool for building and managing Architect flows.
-* **CX as Code** - A Genesys Cloud Terraform provider that provides a command line interface for declaring core Genesys Cloud objects.
+* **Genesys Cloud** - A service suite for enterprise-grade communications, collaboration, and contact center management. You use an Architect inbound call flow, along with a Genesys Cloud integration, data action, queues, DID phone number, and call route.
+* **Archy** - A command-line tool for building and managing Architect flows.
+* **CX as Code** - A Genesys Cloud Terraform provider that provides a command line interface for you to declare core Genesys Cloud objects.
 
 ## Prerequisites
 
@@ -46,7 +45,7 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 ### Genesys Cloud account
 
 * A Genesys Cloud license. For more information, see [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the Genesys Cloud pricing page") in the Genesys website.
-* Master Admin role. For more information, see [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article") in the Genesys Cloud Resource Center.
+* The Master Admin role. For more information, see [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article") in the Genesys Cloud Resource Center.
 * Archy. For more information, see [Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page").
 * CX as Code. For more information, see [CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Opens the CX as Code page").
 
@@ -58,12 +57,12 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 
 ### Define the environment variables
 
-First define the environment variables that hold the OAuth credential grant that is used by CX as Code to provision the Genesys Cloud objects.
+Define the environment variables that hold the OAuth credential grant that is used by CX as Code to provision the Genesys Cloud objects.
 
 - `GENESYSCLOUD_OAUTHCLIENT_ID` - This is the Genesys Cloud client credential grant Id that CX as Code executes against.
 - `GENESYSCLOUD_OAUTHCLIENT_SECRET` - This is the Genesys Cloud client credential secret that CX as Code executes against.
 - `GENESYSCLOUD_REGION` - This is the Genesys Cloud region in which your organization is located.
-- `GENESYSCLOUD_ARCHY_LOCATION` - The location for the organization (e.g mypurecloud.com)
+- `GENESYSCLOUD_ARCHY_LOCATION` - This is the location for the organization (e.g mypurecloud.com)
 
 ### Clone the repo
 
@@ -97,7 +96,7 @@ $ terraform apply --auto-approve
 
 ## Test your flow
 
-Dial a phone number that was provided to the `did_numbers` attribute in `main.tf`. If everything deployed correctly, you should hear "Welcome to the main menu. Press 1 to connect to an agent. Press 2 to disconnect." After pressing 1, you will be transferred to the primary or secondary queue depending on agent availability in the primary queue. 
+Dial a phone number that was provided to the `did_numbers` attribute in `main.tf`. If everything deployed correctly, you should hear "Welcome to the main menu. Press 1 to connect to an agent. Press 2 to disconnect." After you select option 1, you will be transferred to the primary or secondary queue, which depend on the agents availability in the primary queue. 
 
 ## Additional resources
 
