@@ -22,7 +22,7 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 
 ## Contents
 
-* [Solution Components](#solution-components "Goes to the Solution Components section")
+* [Solution components](#solution-components "Goes to the Solution components section")
 * [Prerequisites](#prerequisites "Goes to the Prerequisites section")
 * [Implementation steps](#implementation-steps "Goes to the Implementation steps section")
 * [Test your flow](#test-your-flow "Goes to the testing section")
@@ -33,7 +33,7 @@ A configurable remote Terraform module that uses CX as Code and Archy to deploy 
 * **Genesys Cloud** - A service suite for enterprise-grade communications, collaboration, and contact center management. You use an Architect inbound call flow, along with a Genesys Cloud integration, data action, queues, DID phone number, and call route.
 * **Archy** - A command-line tool for building and managing Architect flows.
 * **CX as Code** - A Genesys Cloud Terraform provider that provides a command-line interface for you to declare core Genesys Cloud objects.
-* **Architect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions.
+* **Architect flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions.
 
 ## Prerequisites
 
@@ -64,17 +64,17 @@ Define the environment variables that hold the OAuth credential grant used by CX
 - `GENESYSCLOUD_OAUTHCLIENT_ID` - This is the Genesys Cloud client credential grant Id that CX as Code executes against.
 - `GENESYSCLOUD_OAUTHCLIENT_SECRET` - This is the Genesys Cloud client credential secret that CX as Code executes against.
 - `GENESYSCLOUD_REGION` - This is the Genesys Cloud region in which your organization is located.
-- `GENESYSCLOUD_ARCHY_LOCATION` - This is the location for the organization (e.g mypurecloud.com)
+- `GENESYSCLOUD_ARCHY_LOCATION` - This is the location for the organization (e.g mypurecloud.com).
 
 ### Clone the repo
 
 Clone the [architect-flow-public-api-blueprint](https://github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint "Opens the project repository on GitHub") repository on GitHub.
 
-**Note**: You can avoid cloning the repo entirely by referencing the remote module where the repo is stored on GitHub. Create your own `main.tf` file, copy the contents of `files/main.tf` over, and change the value associated with the `source` parameter to `"github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint//blueprint/files/modules/check-queue-flow"`. You copy [archy_flow.yml](https://github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint/blob/main/blueprint/files/archy_flow.yml "Opens the exported Archy file in the project repository on GitHub") to the same directory. 
+**Note**: You can avoid cloning the repo entirely by referencing the remote module where the repo is stored on GitHub. To do this, create your own `main.tf` file, copy the contents of `files/main.tf` over, and change the value associated with the `source` parameter to `"github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint//blueprint/files/modules/check-queue-flow"`. You can then copy [archy_flow.yml](https://github.com/GenesysCloudBlueprints/architect-flow-public-api-blueprint/blob/main/blueprint/files/archy_flow.yml "Opens the exported Archy file in the project repository on GitHub") to the same directory. 
 
 ### Configure the Terraform module
 
-Inside `files/main.tf`, configure the module with the phone numbers you want to associate with the IVR and with the user IDs of the primary and secondary queue members.
+Inside `files/main.tf`, configure the module with the phone numbers that you want to associate with the IVR and with the user IDs of the primary and secondary queue members.
  
 ```hcl
 module "check_queue_flow" {
@@ -98,7 +98,7 @@ $ terraform apply --auto-approve
 
 ## Test your flow
 
-Dial a phone number that was provided to the `did_numbers` attribute in `main.tf`. If deployed correctly, you should hear, "Welcome to the main menu. Press 1 to connect to an agent. Press 2 to disconnect." After you select option 1, you will be transferred to the primary or secondary queue, which depends on the agent's availability in the primary queue. 
+Dial a phone number that was provided to the `did_numbers` attribute in `main.tf`. If the Architect flow deployed correctly, you should hear, "Welcome to the main menu. Press 1 to connect to an agent. Press 2 to disconnect." After you select option 1, you will be transferred to the primary or secondary queue, which depends on the agent's availability in the primary queue. 
 
 ## Additional resources
 
